@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pro Split Screen</title>
+    <style>
+        body {
+            width: 300px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            color: #1c1e21;
+        }
+        .header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .header span {
+            margin-left: 8px;
+        }
+        .container {
+            padding: 16px;
+        }
+        #status {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+        }
+        .status-on {
+            background-color: #e6f3ff;
+            color: #005a9e;
+        }
+        .status-off {
+            background-color: #f0f0f0;
+            color: #555;
+        }
+        .url-group {
+            margin-bottom: 12px;
+        }
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
+        }
+        input[type="url"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="url"]:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+        }
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        .btn-primary {
+            background-color: #4a90e2;
+            color: white;
+            grid-column: 1 / -1; /* Span full width */
+        }
+        .btn-primary:hover {
+            background-color: #357abd;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+            grid-column: 1 / -1; /* Span full width */
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .btn-secondary {
+            background-color: #e4e6eb;
+            color: #1c1e21;
+        }
+        .btn-secondary:hover {
+            background-color: #d8dbe0;
+        }
+        .loader {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span>Pro Split Screen</span>
+    </div>
+    <div class="container" id="main-content">
+        <div id="status">Checking status...</div>
+        <div class="url-group">
+            <label for="urlInput">Second Pane URL:</label>
+            <input type="url" id="urlInput" placeholder="https://www.google.com">
+        </div>
+        <button id="loadUrl" class="btn-secondary">Load URL</button>
+
+        <div class="button-group">
+            <button id="toggleLayout" class="btn-secondary">Toggle Layout</button>
+            <button id="resetPanes" class="btn-secondary">Reset Panes</button>
+        </div>
+        
+        <button id="toggleSplit" class="btn-primary">Enable Split Screen</button>
+    </div>
+    <div class="loader" id="loader-content" style="display: none;">
+        <p>This page cannot be split.</p>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
