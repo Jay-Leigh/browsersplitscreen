@@ -1,0 +1,64 @@
+/* styles.css - Styles for the split-screen elements injected into the page */
+
+/* The main container that holds the two panes and the resizer */
+#pro-split-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2147483647; /* Maximum z-index to ensure it's on top of everything */
+    background-color: #f0f2f5; /* A neutral background color */
+}
+
+/* Base styles for both panes */
+#pro-split-pane1, #pro-split-pane2 {
+    overflow: auto; /* Allow scrolling within each pane */
+    position: relative;
+}
+
+/* The first pane, which holds the original page content */
+#pro-split-pane1 {
+    /* No specific styles needed here, it just holds the content */
+}
+
+/* The second pane, which holds the iframe */
+#pro-split-pane2 {
+    background-color: #ffffff; /* White background for the iframe container */
+    display: flex; /* Use flexbox to make the iframe fill the pane */
+}
+
+/* The iframe itself */
+#pro-split-pane2 iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* No ugly border on the iframe */
+    flex-grow: 1; /* Ensure it fills the available space in the pane */
+}
+
+/* The resizer handle that the user drags */
+#pro-split-resizer {
+    background-color: #ccc; /* A visible grey color for the handle */
+    position: relative;
+    z-index: 2147483647; /* Ensure it's on top */
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent the resizer from shrinking */
+}
+
+/* Styles for the resizer when it's in horizontal mode (side-by-side) */
+#pro-split-container[style*="flex-direction: row;"] #pro-split-resizer {
+    width: 5px;
+    height: 100%;
+}
+
+/* Styles for the resizer when it's in vertical mode (top-and-bottom) */
+#pro-split-container[style*="flex-direction: column;"] #pro-split-resizer {
+    height: 5px;
+    width: 100%;
+}
+
+/* Change the resizer color on hover to give visual feedback */
+#pro-split-resizer:hover {
+    background-color: #4a90e2; /* Highlight color to match the popup */
+}
